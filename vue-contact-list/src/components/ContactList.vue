@@ -43,20 +43,6 @@ export default {
     }
   },
   methods: {
-    addContact() {
-      this.contacts.push(
-        { 
-          name: this.newContactName, 
-          address: this.newContactAddress, 
-          phoneNumber: this.newContactPhoneNumber, 
-          email: this.newContactEmail 
-        }
-      )
-      this.newContactName = ''
-      this.newContactAddress = ''
-      this.newContactPhoneNumber = ''
-      this.newContactEmail = ''
-    },
     storeContact(newContact) {
       this.contacts.push({
         name: newContact.name,
