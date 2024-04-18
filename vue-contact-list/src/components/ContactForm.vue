@@ -21,8 +21,8 @@ export default {
     }
   },
   methods: {
-    addNewContact(newContact) {
-      this.$emit('add', newContact)
+    addNewContact(contact) {
+      this.$emit('add', contact)
       this.newContact.name = ''
       this.newContact.address = ''
       this.newContact.phoneNumber = ''
