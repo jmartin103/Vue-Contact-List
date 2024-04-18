@@ -9,6 +9,12 @@
       @delete="deleteContact(contact)" />
   </div>
   <div>
+    <ContactForm 
+      :addedContact="newContact" 
+      @add="storeContact(newContact)">
+    </ContactForm>
+  </div>
+  <!-- <div>
     <form @submit.prevent>
       <label for="txtName">Name:</label>
       <input type="text" v-model="newContactName" name="txtName" id="txtName"/><br>
@@ -21,21 +27,28 @@
 
       <button @click="addContact()">Add Contact</button>
     </form>
-  </div>
+  </div> -->
   
 </template>
 
 <script>
 import ContactCard from './ContactCard.vue'
+import ContactForm from './ContactForm.vue'
 
 export default {
   data() {
     return {
-      newContactName: '',
-      newContactAddress: '',
-      newContactPhoneNumber: '',
-      newContactEmail: '',
-      contacts: []
+      // newContactName: '',
+      // newContactAddress: '',
+      // newContactPhoneNumber: '',
+      // newContactEmail: '',
+      contacts: [],
+      newContact: {
+        name: '',
+        address: '',
+        phoneNumber: '',
+        email: ''
+      }
     }
   },
   emits: ['contacts'],
@@ -54,13 +67,21 @@ export default {
       this.newContactPhoneNumber = ''
       this.newContactEmail = ''
     },
+    storeContact(newContact) {
+      this.contacts.push({
+        name: newContact.name,
+        address: newContact.address,
+        phoneNumber: newContact.phoneNumber,
+        email: newContact.email
+      })
+    },
     deleteContact(contact) {
       let index = this.contacts.indexOf(contact)
       this.contacts.splice(index, 1)
     }
   },
   components: {
-    ContactCard
+    ContactCard, ContactForm
   }
 }
 </script>
