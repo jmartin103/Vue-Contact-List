@@ -14,21 +14,6 @@
       @add="storeContact(newContact)">
     </ContactForm>
   </div>
-  <!-- <div>
-    <form @submit.prevent>
-      <label for="txtName">Name:</label>
-      <input type="text" v-model="newContactName" name="txtName" id="txtName"/><br>
-      <label for="txtAddress">Address:</label>
-      <input type="text" v-model="newContactAddress" name="txtAddress" id="txtAddress"/><br>
-      <label for="txtPhoneNumber">Phone Number:</label>
-      <input type="text" v-model="newContactPhoneNumber" name="txtPhoneNumber" id="txtPhoneNumber"/><br>
-      <label for="txtEmail">Email:</label>
-      <input type="text" v-model="newContactEmail" name="txtEmail" id="txtEmail"/><br>
-
-      <button @click="addContact()">Add Contact</button>
-    </form>
-  </div> -->
-  
 </template>
 
 <script>
@@ -38,10 +23,6 @@ import ContactForm from './ContactForm.vue'
 export default {
   data() {
     return {
-      // newContactName: '',
-      // newContactAddress: '',
-      // newContactPhoneNumber: '',
-      // newContactEmail: '',
       contacts: [],
       newContact: {
         name: '',
