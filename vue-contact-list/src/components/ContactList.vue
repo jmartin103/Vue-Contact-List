@@ -1,12 +1,17 @@
 <template>
   <h1>Welcome to My Contact List</h1>
-  <div v-for="contact in contacts" :key="contact.id">
-    <ContactCard 
-      :name="contact.name" 
-      :address="contact.address" 
-      :phoneNumber="contact.phoneNumber" 
-      :email="contact.email"
-      @delete="deleteContact(contact)" />
+  <div v-if="listIsEmpty">
+    <h3>There are no contacts in your address book. Add some below!</h3>
+  </div>
+  <div v-else>
+    <div v-for="contact in contacts" :key="contact.id">
+      <ContactCard 
+        :name="contact.name" 
+        :address="contact.address" 
+        :phoneNumber="contact.phoneNumber" 
+        :email="contact.email"
+        @delete="deleteContact(contact)" />
+    </div>
   </div>
   <div>
     <ContactForm 
@@ -32,7 +37,11 @@ export default {
       }
     }
   },
-  emits: ['contacts'],
+  computed: {
+    listIsEmpty() {
+      return this.contacts.length === 0
+    }
+  },
   methods: {
     addContact() {
       this.contacts.push(
